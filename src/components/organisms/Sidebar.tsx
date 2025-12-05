@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`fixed left-0 top-0 h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
+      className={`h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
         openedMenu ? 'w-60 px-3' : 'w-20'
       }`}
     >
