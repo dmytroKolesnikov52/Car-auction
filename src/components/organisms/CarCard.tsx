@@ -25,7 +25,7 @@ interface CarCardProps {
 
 const CarCard: React.FC<CarCardProps> = ({ car }) => {
   return (
-    <div className="bg-black border border-[#1a1a1a] text-white rounded-lg max-w-xs">
+    <div className="bg-black border border-[#1a1a1a] text-white rounded-lg w-[318px] shrink-0 transition-transform duration-300 hover:scale-101">
       <CarCardPhotoSwitcher car={car} />
 
       <div className="mt-4 font-medium px-3 pb-3">

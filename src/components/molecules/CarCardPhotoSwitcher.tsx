@@ -38,7 +38,6 @@ export default function CarCardPhotoSwitcher({ car }: Props) {
           `}
       />
 
-      {/* 4 риски під фото */}
       <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
         {[0, 1, 2, 3].map((i) => (
           <div

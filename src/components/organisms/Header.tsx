@@ -69,7 +69,7 @@ export default function Header() {
 
         <LanguageSwitcher />
 
-        <div className="p-3 mr-2 cursor-pointer opacity-80 hover:opacity-100 transition">
+        <div className="p-3 cursor-pointer opacity-80 hover:opacity-100 transition">
           <img
             src="/images/header/login.png"
             alt="login"
