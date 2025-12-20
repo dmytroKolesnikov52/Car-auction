@@ -31,22 +31,27 @@ export function CarCards() {
   }, []);
 
   return (
-    <div className="overflow-hidden">
-      <div
-        ref={emblaRef}
-        className="select-none cursor-grab active:cursor-grabbing"
-      >
-        <div className="flex">
-          {cars.map((car) => (
-            <div
-              key={car.id}
-              className="shrink-0 pr-4"
-            >
-              <CarCard car={car} />
-            </div>
-          ))}
+    <>
+      <span className="font-bold text-3xl">
+        <span className="text-yellow-500">Топ </span>продаж
+      </span>
+      <div className="overflow-hidden mt-4">
+        <div
+          ref={emblaRef}
+          className="select-none cursor-grab active:cursor-grabbing"
+        >
+          <div className="flex">
+            {cars.map((car) => (
+              <div
+                key={car.id}
+                className="shrink-0 pr-4"
+              >
+                <CarCard car={car} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
