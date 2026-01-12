@@ -1,23 +1,16 @@
 import LanguageSwitcher from '../molecules/LanguageSwitcher';
 import ThemeSwitcher from '../molecules/ThemeSwitcher';
+import { barItems } from '../../Types';
 
-interface BarItem {
-  src: string;
-  alt: string;
-  url: string;
+interface HeaderProps {
+  openedMenu: boolean;
 }
 
-const barItems: BarItem[] = [
-  { src: 'instagram', alt: 'instagram', url: 'https://instagram.com' },
-  { src: 'viber', alt: 'viber', url: 'https://viber.com' },
-  { src: 'telegram', alt: 'telegram', url: 'https://telegram.org' },
-  { src: 'facebook', alt: 'facebook', url: 'https://facebook.com' },
-  { src: 'youtube', alt: 'youtube', url: 'https://youtube.com' },
-];
-
-export default function Header() {
+export default function Header({ openedMenu }: HeaderProps) {
   return (
-    <header className="bg-black text-white py-3 px-6 flex items-center justify-between">
+    <header
+      className={`fixed top-0 ${openedMenu ? 'left-60' : 'left-20'} right-0 z-50 bg-black text-white py-3 px-6 flex items-center justify-between transition-all duration-300 h-16`}
+    >
       <div>
         <img
           src="/images/logo/logo.png"

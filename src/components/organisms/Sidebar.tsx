@@ -1,28 +1,17 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { menuItems } from '../../Types';
 
-interface MenuItem {
-  label: string;
-  icon: string;
-  path: string;
+interface SidebarProps {
+  openedMenu: boolean;
+  setOpenedMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const menuItems: MenuItem[] = [
-  { label: 'Головна', icon: 'home', path: '/' },
-  { label: 'Авто на замовлення', icon: 'car-sales', path: '/order' },
-  { label: 'Аукціон', icon: 'auction', path: '/auction' },
-  { label: 'Доставка', icon: 'delivery-car', path: '/delivery' },
-  { label: 'Контакти', icon: 'contact-mail', path: '/contacts' },
-  { label: 'Соц. мережі', icon: 'social', path: '/social' },
-];
-
-export default function Sidebar() {
+export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
   const location = useLocation();
-  const [openedMenu, setOpenedMenu] = useState(false);
 
   return (
     <div
-      className={`h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
+      className={`fixed left-0 h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
         openedMenu ? 'w-60 px-3' : 'w-20'
       }`}
     >
