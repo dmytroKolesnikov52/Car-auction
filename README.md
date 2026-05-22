@@ -1,69 +1,221 @@
-# React + TypeScript + Vite
+# Car Auction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern full-stack car auction platform with live bidding, authentication, admin panel, filtering system, multilingual support, language switcher, and responsive UI.
 
-Currently, two official plugins are available:
+## DEMO
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Frontend:
+[https://dmytrokolesnikov52.github.io/Car-auction/](https://dmytrokolesnikov52.github.io/Car-auction/)
 
-## Expanding the ESLint configuration
+Backend API:
+[https://car-auction-backend-b0ba.onrender.com/api/cars](https://car-auction-backend-b0ba.onrender.com/api/cars)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Frontend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- React
+- TypeScript
+- React Router
+- Tailwind CSS
+- Context API
+- i18next
+- Vite
+
+## Backend
+
+- Node.js
+- Express.js
+- MySQL
+- JWT Authentication
+- bcrypt
+- Cookie Parser
+- Helmet
+- Express Rate Limit
+
+## Deployment
+
+- GitHub Pages — frontend
+- Render — backend
+- Aiven MySQL — database
+
+---
+
+# Features
+
+- Live auction system
+- Automatic bid updates
+- Auction timer logic
+- Buy now functionality
+- Authentication and authorization
+- Admin panel
+- Protected admin routes
+- Cars filtering system
+- Search and pagination
+- Dark / Light theme
+- English / Ukrainian localization
+- Responsive design
+- Persistent auction state
+- Daily auction reset system
+- Full REST API
+- MySQL database integration
+
+---
+
+# Authentication
+
+The application uses JWT authentication with HTTP-only cookies.
+
+Users can:
+
+- Register
+- Login
+- Logout
+
+Admins can:
+
+- Create cars
+- Edit cars
+- Delete cars
+- Manage auctions
+
+---
+
+# Auction System
+
+The auction system includes:
+
+- Real-time bid updates
+- Automatic timer extension
+- Persistent bid state
+- Auction winner tracking
+- Sold car state
+- Automatic daily reset
+
+Auction state is synchronized between frontend and backend.
+
+---
+
+# Project Structure
+
+```txt
+Car-auction/
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── contexts/
+│   ├── hooks/
+│   ├── pages/
+│   ├── api/
+│
+├── vite.config.ts
+├── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+# Installation
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Clone repository
+
+```bash
+git clone https://github.com/dmytrokolesnikov52/Car-auction.git
 ```
+
+---
+
+# Frontend Setup
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+# Backend Setup
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+---
+
+# Environment Variables
+
+## Frontend `.env`
+
+```env
+VITE_API_URL=https://car-auction-backend-b0ba.onrender.com
+```
+
+---
+
+## Backend `.env`
+
+```env
+DB_HOST=
+DB_PORT=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+JWT_SECRET=
+NODE_ENV=production
+```
+
+---
+
+# API Routes
+
+## Authentication
+
+```txt
+POST   /api/auth/register
+POST   /api/auth/login
+POST   /api/auth/logout
+GET    /api/auth/me
+```
+
+## Cars
+
+```txt
+GET    /api/cars
+GET    /api/cars-with-images
+GET    /api/cars/:id/full
+PATCH  /api/cars/:id
+POST   /api/cars
+DELETE /api/cars/:id
+```
+
+## Auction
+
+```txt
+PATCH /api/auction/reset-daily
+```
+
+---
+
+# Notes
+
+- Render free plan may take a few seconds to wake up after inactivity.
+- GitHub Pages is used only for frontend hosting.
+- Backend and database are deployed separately.
+
+---
+
+# Author
+
+Dmytro Kolesnikov
+
+GitHub:
+[https://github.com/dmytrokolesnikov52](https://github.com/dmytrokolesnikov52)

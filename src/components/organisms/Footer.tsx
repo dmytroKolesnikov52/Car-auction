@@ -90,7 +90,7 @@ export default function Footer({ openedMenu }: FooterProps) {
                     className="w-6 h-6 cursor-pointer opacity-60 hover:opacity-100 transition"
                   >
                     <img
-                      src={`/images/header/${src}.png`}
+                      src={`${import.meta.env.BASE_URL}images/header/${src}.png`}
                       alt={alt}
                     />
                   </a>

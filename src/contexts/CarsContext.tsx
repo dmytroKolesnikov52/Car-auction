@@ -22,7 +22,7 @@ export function CarsProvider({ children }: { children: ReactNode }) {
   const [cars, setCars] = useState<Car[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/cars-with-images')
+    fetch('https://car-auction-backend-b0ba.onrender.com/api/cars-with-images')
       .then((res) => res.json())
       .then((data) => setCars(data))
       .catch((error) => {

@@ -99,19 +99,22 @@ export function useAuction(
           );
         }
 
-        fetch(`http://localhost:5000/api/cars/${car.id}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            is_bill_started: 0,
-            is_sold: 1,
-            current_bill: storedBid,
-            phone_user:
-              bidOwnerRef.current === 'user' || isUserBid ?
-                (user?.phone ?? null)
-              : null,
-          }),
-        });
+        fetch(
+          `https://car-auction-backend-b0ba.onrender.com/api/cars/${car.id}`,
+          {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              is_bill_started: 0,
+              is_sold: 1,
+              current_bill: storedBid,
+              phone_user:
+                bidOwnerRef.current === 'user' || isUserBid ?
+                  (user?.phone ?? null)
+                : null,
+            }),
+          },
+        );
       }
     }, 1000);
 
@@ -203,7 +206,7 @@ export function useAuction(
     if (!isAuctionActive) {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/cars/${car.id}`,
+          `https://car-auction-backend-b0ba.onrender.com/api/cars/${car.id}`,
           {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -256,7 +259,7 @@ export function useAuction(
   const resetAuction = useCallback(() => {
     if (!car) return;
 
-    fetch(`http://localhost:5000/api/cars/${car.id}`, {
+    fetch(`https://car-auction-backend-b0ba.onrender.com/api/cars/${car.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -293,16 +296,19 @@ export function useAuction(
     const finalPrice = car.price ?? 0;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/cars/${car.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          is_bill_started: 0,
-          is_sold: 1,
-          current_bill: finalPrice,
-          phone_user: user?.phone || null,
-        }),
-      });
+      const response = await fetch(
+        `https://car-auction-backend-b0ba.onrender.com/api/cars/${car.id}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            is_bill_started: 0,
+            is_sold: 1,
+            current_bill: finalPrice,
+            phone_user: user?.phone || null,
+          }),
+        },
+      );
 
       if (!response.ok) {
         console.error('Failed to buy car');

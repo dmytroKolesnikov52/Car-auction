@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/';
+const API_URL = 'https://car-auction-backend-b0ba.onrender.com/';
 
 export async function getCars() {
   const res = await fetch(`${API_URL}/api/cars`);

@@ -15,7 +15,7 @@ export default function Header({ openedMenu }: HeaderProps) {
 
   useEffect(() => {
     const loadUser = () => {
-      fetch('http://localhost:5000/api/auth/me', {
+      fetch('https://car-auction-backend-b0ba.onrender.com/api/auth/me', {
         credentials: 'include',
       })
         .then((res) => {
@@ -46,10 +46,13 @@ export default function Header({ openedMenu }: HeaderProps) {
   }, []);
 
   const logout = async () => {
-    await fetch('http://localhost:5000/api/auth/logout', {
-      method: 'POST',
-      credentials: 'include',
-    });
+    await fetch(
+      'https://car-auction-backend-b0ba.onrender.com/api/auth/logout',
+      {
+        method: 'POST',
+        credentials: 'include',
+      },
+    );
 
     localStorage.removeItem('user');
     localStorage.removeItem('adminAuth');
@@ -67,7 +70,7 @@ export default function Header({ openedMenu }: HeaderProps) {
       <div>
         <Link to="/">
           <img
-            src="/images/logo/logoDark.png"
+            src={`${import.meta.env.BASE_URL}images/logo/logoDark.png`}
             alt="logo"
             className="h-10"
           />
@@ -88,7 +91,7 @@ export default function Header({ openedMenu }: HeaderProps) {
                 className="w-6 h-6 cursor-pointer opacity-60 hover:opacity-100 transition"
               >
                 <img
-                  src={`/images/header/${src}.png`}
+                  src={`${import.meta.env.BASE_URL}images/header/${src}.png`}
                   alt={alt}
                 />
               </a>
@@ -115,7 +118,7 @@ export default function Header({ openedMenu }: HeaderProps) {
             className="p-3 cursor-pointer opacity-80 hover:opacity-100 transition"
           >
             <img
-              src="/images/header/login.png"
+              src={`${import.meta.env.BASE_URL}images/header/login.png`}
               alt="login"
               className="w-6"
             />
