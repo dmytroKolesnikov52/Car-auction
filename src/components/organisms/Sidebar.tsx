@@ -30,9 +30,10 @@ export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
 
       {menuItems.map(({ label, icon, path }) => {
         const active = location.pathname === path;
+        const text = i18n.language === 'uk' ? label.uk : label.en;
         return (
           <Link
-            key={label}
+            key={text}
             to={path}
             className={`px-6 py-3 flex flex-col items-center rounded-md transition-all ${
               active ?
@@ -48,8 +49,8 @@ export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
             }}
           >
             <img
-              src={`/images/sideBar/${active ? `${icon}Active` : icon}.png`}
-              alt={label}
+              src={`${import.meta.env.BASE_URL}images/sideBar/${active ? `${icon}Active` : icon}.png`}
+              alt={text}
               className="w-6 h-6 flex-shrink-0"
             />
             <span

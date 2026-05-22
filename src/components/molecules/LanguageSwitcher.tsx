@@ -5,16 +5,19 @@ export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const languages = ['EN', 'UK'] as const;
+  type Language = (typeof languages)[number];
   const currentLang = i18n.language === 'en' ? 'EN' : 'UK';
-  const changeLang = (lang: 'UK' | 'EN') => {
+  function changeLang(lang: Language) {
     const code = lang === 'EN' ? 'en' : 'uk';
 
     i18n.changeLanguage(code);
     localStorage.setItem('lang', code);
     setOpen(false);
-  };
+  }
 
-  const allLangs = ['UK', 'EN'];
+  const allLangs = ['UK', 'EN'] as const;
   const otherLangs = allLangs.filter((l) => l !== currentLang);
 
   return (
