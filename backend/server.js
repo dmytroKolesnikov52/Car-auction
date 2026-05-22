@@ -439,6 +439,30 @@ app.patch('/api/cars/:id', async (req, res) => {
   }
 });
 
+app.patch('/api/auction/reset-daily', async (req, res) => {
+  try {
+    await db.query(`
+      UPDATE cars
+      SET
+        is_bill_started = 0,
+        is_sold = 0,
+        current_bill = 0,
+        phone_user = NULL
+      WHERE is_auction = 1
+    `);
+
+    res.json({
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: 'Failed to reset auctions',
+    });
+  }
+});
+
 app.post('/api/cars', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const {
