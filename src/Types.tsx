@@ -1,3 +1,5 @@
+import type { CarFiltersState } from './components/templates/CarFilters';
+
 interface BarItem {
   src: string;
   alt: string;
@@ -17,6 +19,20 @@ interface Columns {
   text: string;
 }
 
+export const initialFilters: CarFiltersState = {
+  brand: [],
+  body_type: [],
+  engine_type: [],
+  seats: [],
+  drive_type: [],
+  transmission: [],
+  year: { from: '', to: '' },
+  price: { from: '', to: '' },
+  mileage: { from: '', to: '' },
+  engine_volume: { from: '', to: '' },
+  battery_capacity: { from: '', to: '' },
+};
+
 export const columns1: Columns[] = [
   { href: '#', text: 'Про нас' },
   { href: '#', text: 'Як ми працюємо' },
@@ -34,16 +50,60 @@ export const columns2: Columns[] = [
 ];
 
 interface MenuItem {
-  label: string;
+  label: { en: string; uk: string };
   icon: string;
   path: string;
 }
 
 export const menuItems: MenuItem[] = [
-  { label: 'Головна', icon: 'home', path: '/' },
-  { label: 'Авто на замовлення', icon: 'car-sales', path: '/order' },
-  { label: 'Аукціон', icon: 'auction', path: '/auction' },
-  { label: 'Доставка', icon: 'delivery-car', path: '/delivery' },
-  { label: 'Контакти', icon: 'contact-mail', path: '/contacts' },
-  { label: 'Соц. мережі', icon: 'social', path: '/social' },
+  { label: { en: 'Home', uk: 'Головна' }, icon: 'home', path: '/' },
+  {
+    label: { en: 'Order a car', uk: 'Авто на замовлення' },
+    icon: 'car-sales',
+    path: '/order',
+  },
+  {
+    label: { en: 'Auction', uk: 'Аукціон' },
+    icon: 'auction',
+    path: '/auction',
+  },
+  {
+    label: { en: 'Delivery', uk: 'Доставка' },
+    icon: 'delivery-car',
+    path: '/delivery',
+  },
+  {
+    label: { en: 'Contacts', uk: 'Контакти' },
+    icon: 'contact-mail',
+    path: '/contacts',
+  },
+  {
+    label: { en: 'Social media', uk: 'Соц. мережі' },
+    icon: 'social',
+    path: '/social',
+  },
 ];
+
+export type BidOwner = 'user' | 'bot' | null;
+
+export type AuctionBot = {
+  id: number;
+  name: string;
+};
+
+export type CalculateChanceParams = {
+  primaryDamage?: string | null;
+  secondaryDamage?: string | null;
+  hasKeys?: string | null;
+  runStatus?: string | null;
+  mileage?: number | null;
+  currentBid?: number | null;
+  buyNowPrice?: number | null;
+};
+
+export interface User {
+  id: number;
+  name: string;
+  phone: string;
+  role: 'user' | 'admin';
+}

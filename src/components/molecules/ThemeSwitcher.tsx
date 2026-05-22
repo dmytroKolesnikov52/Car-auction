@@ -1,31 +1,35 @@
-import { useState } from 'react';
+type ThemeSwitcherProps = {
+  lightMode: boolean;
+  setLightMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export default function ThemeSwitcher() {
-  const [darkMode, setDarkMode] = useState(true);
-
+export default function ThemeSwitcher({
+  lightMode,
+  setLightMode,
+}: ThemeSwitcherProps) {
   return (
     <div className="flex items-center gap-1">
       <img
-        key={'moon'}
         src="/images/header/moon.png"
-        className={`h-6 transition-all ${darkMode ? '' : 'translate-x-10'}`}
+        className={`h-6 transition-all ${lightMode ? 'translate-x-10' : ''}`}
       />
+
       <button
-        onClick={() => setDarkMode(!darkMode)}
-        className={`z-1 cursor-pointer w-16 h-8 rounded-full flex items-center transition-all ${
-          darkMode ? 'bg-[#1b1b1b]' : 'bg-white'
+        onClick={() => setLightMode((prev) => !prev)}
+        className={`z-1 cursor-pointer w-16 h-8 rounded-full flex items-center border-1 border-gray-900 transition-all ${
+          lightMode ? 'bg-white' : 'bg-[#1b1b1b]'
         }`}
       >
         <div
           className={`w-6 h-6 rounded-full transition-all ${
-            darkMode ? 'bg-white translate-x-1' : 'bg-[#1b1b1b] translate-x-9'
+            lightMode ? 'bg-[#1b1b1b] translate-x-9' : 'bg-white translate-x-1'
           }`}
-        ></div>
+        />
       </button>
+
       <img
-        key={'sun'}
         src="/images/header/sun.png"
-        className={`h-7 transition-all ${darkMode ? '-translate-x-10' : ''}`}
+        className={`h-7 transition-all ${lightMode ? '' : '-translate-x-10'}`}
       />
     </div>
   );

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { menuItems } from '../../Types';
+import { useTranslation } from 'react-i18next';
 
 interface SidebarProps {
   openedMenu: boolean;
@@ -8,10 +9,12 @@ interface SidebarProps {
 
 export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
   const location = useLocation();
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language as 'en' | 'uk';
 
   return (
     <div
-      className={`fixed left-0 h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
+      className={`fixed z-40 left-0 h-full bg-[#111111] transition-all duration-300 flex flex-col gap-3 items-center ${
         openedMenu ? 'w-60 px-3' : 'w-20'
       }`}
     >
@@ -36,6 +39,13 @@ export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
                 'bg-[#1b1b1b] text-yellow-400'
               : 'text-gray-300 hover:text-yellow-400 hover:bg-[#1a1a1a]'
             } ${openedMenu ? 'flex w-full flex-row gap-3 px-5 justify-start' : 'max-w-20 justify-center'}`}
+            onClick={(e) => {
+              if (active) {
+                e.preventDefault();
+                return;
+              }
+              setOpenedMenu(false);
+            }}
           >
             <img
               src={`/images/sideBar/${active ? `${icon}Active` : icon}.png`}
@@ -45,7 +55,7 @@ export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
             <span
               className={`${openedMenu ? 'text-[14px] mb-2' : 'text-[10px]'} mt-1.5 text-center`}
             >
-              {label}
+              {label[currentLanguage]}
             </span>
           </Link>
         );

@@ -1,8 +1,18 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function LanguageSwitcher() {
-  const [currentLang, setCurrentLang] = useState<'UK' | 'EN'>('UK');
+  const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+
+  const currentLang = i18n.language === 'en' ? 'EN' : 'UK';
+  const changeLang = (lang: 'UK' | 'EN') => {
+    const code = lang === 'EN' ? 'en' : 'uk';
+
+    i18n.changeLanguage(code);
+    localStorage.setItem('lang', code);
+    setOpen(false);
+  };
 
   const allLangs = ['UK', 'EN'];
   const otherLangs = allLangs.filter((l) => l !== currentLang);
@@ -31,10 +41,7 @@ export default function LanguageSwitcher() {
         {otherLangs.map((lang) => (
           <div
             key={lang}
-            onClick={() => {
-              setCurrentLang(lang as 'UK' | 'EN');
-              setOpen(false);
-            }}
+            onClick={() => changeLang(lang)}
             className="
                 bg-yellow-400 text-black font-semibold px-4 py-2 text-sm
                 cursor-pointer border-t border-black rounded-sm

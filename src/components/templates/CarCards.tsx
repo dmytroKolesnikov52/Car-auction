@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import type { Car } from '../organisms/CarCard';
+import { useRef } from 'react';
 import CarCard from '../organisms/CarCard';
+import { useCarsWithOutAuction } from '../../contexts/CarsContext';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { useTranslation } from 'react-i18next';
 
 export function CarCards() {
-  const [cars, setCars] = useState<Car[]>([]);
+  const cars = useCarsWithOutAuction();
+  const { t } = useTranslation();
 
   const autoplay = useRef(
     Autoplay({
@@ -24,21 +26,16 @@ export function CarCards() {
     [autoplay.current],
   );
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/api/cars-with-images`)
-      .then((res) => res.json())
-      .then((data) => setCars(data));
-  }, []);
-
   return (
     <>
-      <span className="font-bold text-3xl">
-        <span className="text-yellow-500">Топ </span>продаж
+      <span className="font-bold text-3xl ml-4">
+        <span className="text-yellow-500">{t('carCards.top')}</span>{' '}
+        {t('carCards.sales')}
       </span>
-      <div className="overflow-hidden mt-4">
+      <div className="overflow-hidden mt-4 mx-4">
         <div
           ref={emblaRef}
-          className="select-none cursor-grab active:cursor-grabbing"
+          className="select-none cursor-grab active:cursor-grabbing -ml-[120px]"
         >
           <div className="flex">
             {cars.map((car) => (

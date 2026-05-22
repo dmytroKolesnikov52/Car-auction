@@ -3,9 +3,15 @@ import type { Car } from '../organisms/CarCard';
 
 interface Props {
   car: Car;
+  styleForHeight?: string;
+  styleForWidth?: string;
 }
 
-export default function CarCardPhotoSwitcher({ car }: Props) {
+export default function CarCardPhotoSwitcher({
+  car,
+  styleForHeight,
+  styleForWidth,
+}: Props) {
   const [activeImage, setActiveImage] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -23,7 +29,7 @@ export default function CarCardPhotoSwitcher({ car }: Props) {
 
   return (
     <div
-      className="relative rounded-t-lg w-full h-56 overflow-hidden cursor-pointer"
+      className={`relative rounded-t-lg w-full overflow-hidden cursor-pointer ${styleForHeight}`}
       onMouseMove={handleMouseMove}
     >
       <img
@@ -42,7 +48,7 @@ export default function CarCardPhotoSwitcher({ car }: Props) {
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
-            className={`h-1 w-16 rounded transition-all
+            className={`h-1 ${styleForWidth} rounded transition-all
                 ${activeImage === i ? 'bg-yellow-400' : 'bg-gray-500'}
               `}
           ></div>

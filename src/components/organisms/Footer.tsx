@@ -1,37 +1,46 @@
 import { barItems } from '../../Types';
 import { columns1, columns2 } from '../../Types';
+import { useTranslation } from 'react-i18next';
 
 interface FooterProps {
   openedMenu: boolean;
 }
 
 export default function Footer({ openedMenu }: FooterProps) {
+  const { t } = useTranslation();
+
   return (
     <footer
-      className={`flex justify-center bg-black text-gray-300 ${openedMenu ? 'pl-66' : 'pl-26'} transition-all duration-300`}
+      className={`flex justify-center bg-black text-gray-300 ${
+        openedMenu ? 'pl-66' : 'pl-26'
+      } transition-all duration-300`}
     >
       <div className="container py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="mb-4 text-sm font-semibold text-yellow-400">
-              Наші відділення
+              {t('footer.branches')}
             </h3>
+
             <p className="text-sm">
-              <span className="font-medium text-white">Біла Церква</span>
+              <span className="font-medium text-white">
+                {t('footer.location')}
+              </span>
               <br />
-              вул. Ярослава Мудрого, 45
+              {t('footer.address')}
             </p>
 
             <div className="mt-4 space-y-1 text-sm">
-              <p>+38 (099) 999 99 99</p>
-              <p>+38 (066) 666 66 66</p>
+              <p>{t('footer.phone1')}</p>
+              <p>{t('footer.phone2')}</p>
             </div>
           </div>
 
           <div>
             <h3 className="mb-4 text-sm font-semibold text-yellow-400">
-              Компанія
+              {t('footer.company')}
             </h3>
+
             <ul className="space-y-2 text-sm transition-all">
               {columns1.map((item) => (
                 <li key={item.text}>
@@ -39,7 +48,7 @@ export default function Footer({ openedMenu }: FooterProps) {
                     href={item.href}
                     className="hover:text-white"
                   >
-                    {item.text}
+                    {t(item.text)}
                   </a>
                 </li>
               ))}
@@ -48,8 +57,9 @@ export default function Footer({ openedMenu }: FooterProps) {
 
           <div>
             <h3 className="mb-4 text-sm font-semibold text-yellow-400">
-              Послуги
+              {t('footer.services')}
             </h3>
+
             <ul className="space-y-2 text-sm">
               {columns2.map((item) => (
                 <li key={item.text}>
@@ -57,7 +67,7 @@ export default function Footer({ openedMenu }: FooterProps) {
                     href={item.href}
                     className="hover:text-white"
                   >
-                    {item.text}
+                    {t(item.text)}
                   </a>
                 </li>
               ))}
@@ -66,7 +76,7 @@ export default function Footer({ openedMenu }: FooterProps) {
 
           <div>
             <h3 className="mb-4 text-sm font-semibold text-yellow-400">
-              Ми в соцмережах
+              {t('footer.socialMedia')}
             </h3>
 
             <div className="flex items-center gap-4">
@@ -91,7 +101,7 @@ export default function Footer({ openedMenu }: FooterProps) {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-xs text-gray-400">
-          © {new Date().getFullYear()} Car Auction. Всі права захищені.
+          {t('footer.copy', { year: new Date().getFullYear() })}
         </div>
       </div>
     </footer>
