@@ -23,7 +23,7 @@ export default function Sidebar({ openedMenu, setOpenedMenu }: SidebarProps) {
         className={`group mt-5 px-6 py-3 flex items-center justify-center cursor-pointer ${openedMenu ? 'w-full' : ''}`}
       >
         <img
-          src={`/images/sideBar/${openedMenu ? 'close' : 'burger-bar'}.png`}
+          src={`${import.meta.env.BASE_URL}images/sideBar/${openedMenu ? 'close' : 'burger-bar'}.png`}
           className="w-6 h-6 group-hover:w-7 group-hover:h-7 transition-all"
         />
       </button>
