@@ -34,7 +34,7 @@ export default function CarCardPhotoSwitcher({
     >
       <img
         key={activeImage}
-        src={`http://localhost:5000${car.images[activeImage]}`}
+        src={`https://car-auction-backend-b0ba.onrender.com${car.images[activeImage]}`}
         alt={car.model}
         onLoad={() => setLoaded(true)}
         className={`

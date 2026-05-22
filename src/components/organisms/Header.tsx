@@ -15,7 +15,7 @@ export default function Header({ openedMenu }: HeaderProps) {
 
   useEffect(() => {
     const loadUser = () => {
-      fetch('http://localhost:5000/api/auth/me', {
+      fetch('https://car-auction-backend-b0ba.onrender.com/api/auth/me', {
         credentials: 'include',
       })
         .then((res) => {
@@ -46,10 +46,13 @@ export default function Header({ openedMenu }: HeaderProps) {
   }, []);
 
   const logout = async () => {
-    await fetch('http://localhost:5000/api/auth/logout', {
-      method: 'POST',
-      credentials: 'include',
-    });
+    await fetch(
+      'https://car-auction-backend-b0ba.onrender.com/api/auth/logout',
+      {
+        method: 'POST',
+        credentials: 'include',
+      },
+    );
 
     localStorage.removeItem('user');
     localStorage.removeItem('adminAuth');

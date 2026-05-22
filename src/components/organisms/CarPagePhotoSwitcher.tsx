@@ -26,7 +26,7 @@ export function CarPagePhotoSwitcher({ car }: { car: Car }) {
       <div>
         <div className="relative bg-black">
           <img
-            src={`http://localhost:5000${car.images[activeImageIndex]}`}
+            src={`https://car-auction-backend-b0ba.onrender.com${car.images[activeImageIndex]}`}
             alt={car.title}
             onClick={() => setIsImagePopupOpen(true)}
             className="w-full h-[320px] md:h-[520px] object-cover cursor-pointer"
@@ -77,7 +77,7 @@ export function CarPagePhotoSwitcher({ car }: { car: Car }) {
                   }`}
                 >
                   <img
-                    src={`http://localhost:5000${image}`}
+                    src={`https://car-auction-backend-b0ba.onrender.com${image}`}
                     alt={`${car.title} ${index + 1}`}
                     className="w-24 h-16 object-cover"
                   />
@@ -149,7 +149,7 @@ export function CarPagePhotoSwitcher({ car }: { car: Car }) {
             )}
 
             <img
-              src={`http://localhost:5000${car.images[activeImageIndex]}`}
+              src={`https://car-auction-backend-b0ba.onrender.com${car.images[activeImageIndex]}`}
               alt={car.title}
               onClick={(e) => e.stopPropagation()}
               className="max-w-full max-h-[90vh] object-contain"

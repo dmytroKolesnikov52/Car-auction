@@ -86,7 +86,7 @@ function Admin() {
             className="rounded-2xl bg-[#151515] border border-white/10 p-5 flex gap-5 items-center"
           >
             <img
-              src={`http://localhost:5000${car.images[0]}`}
+              src={`https://car-auction-backend-b0ba.onrender.com${car.images[0]}`}
               alt={car.title}
               className="w-40 h-28 rounded-xl object-cover bg-black"
             />

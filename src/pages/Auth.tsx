@@ -24,8 +24,8 @@ function Auth() {
 
     const url =
       isRegister ?
-        'http://localhost:5000/api/auth/register'
-      : 'http://localhost:5000/api/auth/login';
+        'https://car-auction-backend-b0ba.onrender.com/api/auth/register'
+      : 'https://car-auction-backend-b0ba.onrender.com/api/auth/login';
 
     const body = isRegister ? { name, phone, password } : { phone, password };
 

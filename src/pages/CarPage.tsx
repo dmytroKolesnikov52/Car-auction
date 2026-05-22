@@ -93,7 +93,7 @@ export default function CarPage() {
 
   useEffect(() => {
     const loadUser = () => {
-      fetch('http://localhost:5000/api/auth/me', {
+      fetch('https://car-auction-backend-b0ba.onrender.com/api/auth/me', {
         credentials: 'include',
       })
         .then((res) => {
